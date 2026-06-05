@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - Framely</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8f9fa;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      text-decoration: none;
+      color: #007aff;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .last-update {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      font-size: 1.3rem;
+      letter-spacing: -0.2px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    p, li {
+      color: #444;
+      margin: 15px 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .contact-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-top: 40px;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Back to home</a>
+
+    <header>
+      <h1>Privacy Policy for Framely</h1>
+      <p class="last-update">Last updated: June 5, 2026</p>
+    </header>
+
+    <section>
+      <p>This Privacy Policy applies to <strong>Framely</strong>, a digital photo frame application for Android developed by Adrián Garrido Pazos. Framely connects to your own self-hosted <a href="https://immich.app" target="_blank">Immich</a> server and displays your photos full-screen with configurable transitions, a clock/date overlay, and live local weather.</p>
+
+      <h2>1. Data Stored Locally on Your Device</h2>
+      <p>Framely stores the following data exclusively on your device using Android's private DataStore — it is never transmitted to the developer or any third-party server:</p>
+      <ul>
+        <li><strong>Immich server URL and API key:</strong> used solely to authenticate requests to your own server.</li>
+        <li><strong>Selected album, transition type, and interval:</strong> saved to restore your configuration between sessions.</li>
+      </ul>
+
+      <h2>2. Location Permission</h2>
+      <p>Framely requests <strong>approximate location</strong> permission (<code>ACCESS_COARSE_LOCATION</code>) solely to display the current temperature and weather condition via the public <a href="https://open-meteo.com" target="_blank">Open-Meteo</a> API. Your approximate coordinates are sent directly to Open-Meteo and are not stored or shared with any other party. This permission is optional — if denied, the weather overlay is simply not shown and the app continues to work normally.</p>
+      <p>For more information on how Open-Meteo handles data, please visit: <a href="https://open-meteo.com/en/terms" target="_blank">open-meteo.com/en/terms</a>.</p>
+
+      <h2>3. Photos and Media</h2>
+      <p>Photos are fetched directly from your Immich server. They are never permanently stored on the device beyond the temporary image cache managed by the operating system. Framely blocks screenshots and screen recording to protect your content.</p>
+
+      <h2>4. Third-Party SDKs and Analytics</h2>
+      <p>Framely does not include any analytics, advertising, or social media SDKs. We do not collect, sell, or share any personal data. There are no ads and no telemetry of any kind.</p>
+
+      <h2>5. Data Sharing</h2>
+      <p>No personal data is shared with third parties. The only external network connections Framely makes are:</p>
+      <ul>
+        <li>Your own Immich server (URL you provide).</li>
+        <li>Open-Meteo API for weather data (anonymous, no account required).</li>
+      </ul>
+
+      <div class="contact-box">
+        <h2>6. Contact</h2>
+        <p>If you have any questions regarding this Privacy Policy, feel free to reach out:</p>
+        <p><strong>Email:</strong> <a href="mailto:hola@adriangp.com" style="color: #111;">hola@adriangp.com</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Adrián Garrido Pazos - Framely</p>
+    </footer>
+  </div>
+</body>
+</html>
