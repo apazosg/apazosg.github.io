@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Framely — Quick Setup QR</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8f9fa;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      text-decoration: none;
+      color: #007aff;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #111;
+      background: #fafafa;
+      box-sizing: border-box;
+      transition: border-color 0.15s;
+      font-family: inherit;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #007aff;
+      background: #fff;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .warning {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: #7a5f00;
+      margin-bottom: 24px;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+
+    button:hover { background: #0066d6; }
+    button:active { background: #0055b3; }
+
+    #result {
+      margin-top: 36px;
+      text-align: center;
+      display: none;
+    }
+
+    #qrcode {
+      display: inline-block;
+      padding: 16px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    #qrcode canvas, #qrcode img {
+      display: block;
+    }
+
+    .deeplink-box {
+      margin-top: 20px;
+      background: #f0f0f0;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.78rem;
+      color: #555;
+      word-break: break-all;
+      text-align: left;
+    }
+
+    .result-note {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.85rem;
+      color: #aaa;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Back to home</a>
+
+    <h1>Framely Setup QR</h1>
+    <p class="subtitle">Generate a QR code to configure the app instantly — scan it from the Framely welcome screen.</p>
+
+    <div class="card">
+      <div class="warning">
+        ⚠️ Your API key will be embedded in the QR. Keep it private and don't share it publicly.
+      </div>
+
+      <div class="field">
+        <label>Immich Server URL *</label>
+        <input type="url" id="url" placeholder="https://photos.yourdomain.com" />
+      </div>
+
+      <div class="field">
+        <label>API Key *</label>
+        <input type="text" id="apiKey" placeholder="your-immich-api-key" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label>Album ID *</label>
+        <input type="text" id="albumId" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+      </div>
+
+      <div class="field">
+        <label>Album Name</label>
+        <input type="text" id="albumName" placeholder="My Photos (optional)" />
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Transition</label>
+          <select id="transition">
+            <option value="CROSSFADE">Crossfade</option>
+            <option value="SLIDE">Slide</option>
+            <option value="ZOOM">Zoom</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Interval (seconds)</label>
+          <input type="number" id="interval" value="10" min="5" max="300" />
+        </div>
+      </div>
+
+      <button onclick="generate()">Generate QR</button>
+    </div>
+
+    <div id="result">
+      <div id="qrcode"></div>
+      <p class="result-note">Scan this QR from the Framely welcome screen or settings.</p>
+      <div class="deeplink-box" id="deeplink"></div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Adrián Garrido Pazos · <a href="/privacidad/framely.html" style="color:#aaa;">Privacy Policy</a></p>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    function generate() {
+      const url       = document.getElementById('url').value.trim();
+      const apiKey    = document.getElementById('apiKey').value.trim();
+      const albumId   = document.getElementById('albumId').value.trim();
+      const albumName = document.getElementById('albumName').value.trim();
+      const transition= document.getElementById('transition').value;
+      const interval  = document.getElementById('interval').value || '10';
+
+      if (!url || !apiKey || !albumId) {
+        alert('Server URL, API Key and Album ID are required.');
+        return;
+      }
+
+      const params = new URLSearchParams({ url, apiKey, albumId, albumName, transition, interval });
+      const deepLink = `framely://configure?${params}`;
+
+      const container = document.getElementById('qrcode');
+      container.innerHTML = '';
+
+      new QRCode(container, {
+        text: deepLink,
+        width: 280,
+        height: 280,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M,
+      });
+
+      document.getElementById('deeplink').textContent = deepLink;
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
