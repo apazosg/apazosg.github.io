@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - Markly</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8f9fa;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      text-decoration: none;
+      color: #007aff;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .last-update {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      font-size: 1.3rem;
+      letter-spacing: -0.2px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    p, li {
+      color: #444;
+      margin: 15px 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .contact-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-top: 40px;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Back to home</a>
+
+    <header>
+      <h1>Privacy Policy for Markly</h1>
+      <p class="last-update">Last updated: June 9, 2026</p>
+    </header>
+
+    <section>
+      <p><strong>Markly</strong> is a meeting recorder application for Android and Windows developed by Adrián Garrido Pazos. It captures audio from your meetings, lets you add timestamped notes during recording, and optionally uploads sessions to a personal backend server for AI-powered transcription, speaker diarization, and summarization.</p>
+
+      <h2>1. Audio Recording</h2>
+      <p>Markly requests the <strong>RECORD_AUDIO</strong> permission (Android) or access to your audio device (Windows) solely to capture meeting audio. Recordings are stored locally on your device inside the app's private folder (<code>Documents/Recorder/sessions/</code>) and are never transmitted anywhere without your explicit action (tapping "Upload").</p>
+
+      <h2>2. Data Stored Locally</h2>
+      <p>The following data is stored on your device only:</p>
+      <ul>
+        <li><strong>Audio files</strong> (.m4a on Android, .wav on Windows) — your meeting recordings.</li>
+        <li><strong>Notes CSV</strong> — timestamped notes you add during recording.</li>
+        <li><strong>Session metadata</strong> — title, labels, and speaker names you assign.</li>
+      </ul>
+      <p>This data remains on your device unless you explicitly upload a session to the server.</p>
+
+      <h2>3. Authentication</h2>
+      <p>Markly uses <strong>Firebase Authentication</strong> with Google Sign-In. When you sign in, Google provides a secure token that identifies your account. No additional personal data is stored by the app beyond what Firebase Auth provides (user ID and email). For more information, see <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy and Security</a>.</p>
+
+      <h2>4. Data Uploaded to the Server</h2>
+      <p>When you tap <strong>"Upload"</strong> on a session, the following data is sent to a personal backend server operated by the developer:</p>
+      <ul>
+        <li>The audio file of that session.</li>
+        <li>The notes CSV associated with that session.</li>
+        <li>Any metadata you have added (title, labels).</li>
+      </ul>
+      <p>This server is hosted on infrastructure controlled by the developer and is accessible only to authenticated users. Data is not shared with third parties except as described in Section 5.</p>
+
+      <h2>5. Third-Party AI Services</h2>
+      <p>Once uploaded, your audio and transcript are processed by the following third-party services to generate transcription, speaker diarization, and an AI summary:</p>
+      <ul>
+        <li>
+          <strong>Deepgram</strong> — audio is sent to Deepgram's API for speech-to-text transcription and speaker identification. Deepgram processes audio in accordance with their <a href="https://deepgram.com/privacy" target="_blank">Privacy Policy</a>.
+        </li>
+        <li>
+          <strong>Google Gemini</strong> — the diarized transcript text (not the audio) is sent to Google Gemini for correction and summarization. Google processes this data in accordance with their <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.
+        </li>
+      </ul>
+      <p>Neither service receives your account credentials or any data beyond what is described above.</p>
+
+      <h2>6. Data Retention and Deletion</h2>
+      <p>You can delete any session at any time from the app's history screen. Deletion removes both the local files (if present) and the server-side copy, including the audio, notes, and generated transcript. Once deleted, this data cannot be recovered.</p>
+
+      <h2>7. Usage and Credits</h2>
+      <p>To manage service usage, Markly records anonymized consumption events on the server: the duration of each transcribed audio (in seconds) and the number of tokens processed by the AI summary. These events are associated with your account ID and are used exclusively to calculate your monthly credit balance. They are never shared with third parties and are not used for profiling or advertising purposes.</p>
+      <p>You can view your monthly credit consumption at any time from the <strong>Account</strong> tab inside the app.</p>
+
+      <h2>8. Access to Your Content</h2>
+      <p>Your transcripts, summaries, notes, and recordings are processed automatically by the server and the AI services described in Section 5. <strong>The developer does not manually read, listen to, or access the content of your sessions.</strong> Access controls ensure that each user can only retrieve their own data.</p>
+
+      <h2>9. Analytics and Advertising</h2>
+      <p>Markly contains no analytics SDKs, advertising networks, or tracking of any kind. No crash reports or behavioral telemetry is collected beyond the credit usage described in Section 7.</p>
+
+      <h2>10. Permissions Summary (Android)</h2>
+      <ul>
+        <li><strong>RECORD_AUDIO</strong> — required to capture meeting audio. The app does not record in the background without your active session.</li>
+        <li><strong>FOREGROUND_SERVICE / FOREGROUND_SERVICE_MICROPHONE</strong> — keeps the recording active while the screen is off or the app is in the background during an active session.</li>
+        <li><strong>INTERNET</strong> — required to authenticate and upload sessions.</li>
+      </ul>
+
+      <div class="contact-box">
+        <h2>11. Contact</h2>
+        <p>If you have any questions about this Privacy Policy, please contact:</p>
+        <p><strong>Email:</strong> <a href="mailto:hola@adriangp.com" style="color: #111;">hola@adriangp.com</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Adrián Garrido Pazos - Markly</p>
+    </footer>
+  </div>
+</body>
+</html>
